@@ -5,6 +5,7 @@
 # -*- coding: utf-8 -*-
 from lettuce import step, world
 
+import responses
 import subprocess
 
 
@@ -33,6 +34,32 @@ def when_i_launch_command_line(step):
 
 
 @step(u'Then I see the string \'([^\']*)\'')
+def then_i_see_the_string_group1(step, expected):
+    result = world.stdout.rstrip('\n')
+    assert result == expected, \
+        'Got: {}\nExpected: {}'.format(result, expected)
+
+
+@responses.activate
+@step(u'When I launch command line with json command')
+def when_i_launch_command_line_with_json_command(step):
+    responses.add(responses.GET,
+                  'http://echo.jsontest.com/key/value/one/two',
+                  json='{"one": "two","key": "value"}',
+                  status=200,
+                  content_type='application/json')
+    world.command_line = './alice.py json'
+    if world.parameters:
+        world.command_line += ' ' + world.parameters
+
+    p = subprocess.Popen(world.command_line, shell=True,
+                         stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                         close_fds=True)
+    world.stdout, world.stderr = p.communicate()
+    print world.stdout
+
+
+@step(u'Then I see the string "([^"]*)"')
 def then_i_see_the_string_group1(step, expected):
     result = world.stdout.rstrip('\n')
     assert result == expected, \

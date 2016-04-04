@@ -2,6 +2,7 @@
 
 Usage:
     alice hello [--name <name>]
+    alice json
 
 Options:
     alice -h | --help
@@ -27,6 +28,9 @@ def main():
             hello_string = bob.say_hello()
 
         print hello_string
+
+    if arguments['json']:
+        print bob.get_json()
 
 
 if __name__ == '__main__':

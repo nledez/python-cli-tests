@@ -5,3 +5,4 @@ nose-cov==1.6
 pylint==1.5.5
 lettuce==0.2.21
 python-Levenshtein==0.12.0
+responses==0.5.1
