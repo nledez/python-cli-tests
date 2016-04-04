@@ -1,1 +1,6 @@
 virtualenv/
+cover/
+.coverage
+coverage.xml
+nosetests.xml
+*.pyc
