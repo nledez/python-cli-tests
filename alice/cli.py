@@ -13,12 +13,19 @@ import docopt
 
 from . import bob
 
+ARGV = None
+
 
 def main():
     '''
         Main part of alice command line
     '''
-    arguments = docopt.docopt(__doc__, version='Naval Fate 2.0')
+    if ARGV:
+        argv = ARGV
+    else:
+        import sys
+        argv = sys.argv[1:]
+    arguments = docopt.docopt(__doc__, argv=argv, version='1.0')
 
     if arguments['hello']:
         if arguments['--name']:
