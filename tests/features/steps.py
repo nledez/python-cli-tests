@@ -59,11 +59,3 @@ def when_i_launch_command_line_with_json_command(step):
         alice.cli.ARGV = world.command_line
         alice.cli.main()
         world.stdout = captured.stdout
-    # import debug
-
-
-@step(u'Then I see the string "([^"]*)"')
-def then_i_see_the_string_group1(step, expected):
-    result = world.stdout.rstrip('\n')
-    assert result == expected, \
-        '\nGot:\t{}\nExpected:\t{}'.format(result, expected)
