@@ -30,7 +30,6 @@ def when_i_launch_command_line(step):
 
     import iocapture
     with iocapture.capture() as captured:
-        alice.cli.test = ''
         alice.cli.ARGV = world.command_line
         alice.cli.main()
         world.stdout = captured.stdout
@@ -57,7 +56,6 @@ def when_i_launch_command_line_with_json_command(step):
 
     import iocapture
     with iocapture.capture() as captured:
-        alice.cli.test = ''
         alice.cli.ARGV = world.command_line
         alice.cli.main()
         world.stdout = captured.stdout

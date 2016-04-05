@@ -38,7 +38,3 @@ def main():
 
     if arguments['json']:
         print bob.get_json()
-
-
-if __name__ == '__main__':
-    main()
