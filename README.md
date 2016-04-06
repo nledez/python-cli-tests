@@ -31,3 +31,24 @@ Launch unit tests with sniffer:
 ```
 sniffer -x--with-xunit -x--with-coverage -x--cover-tests -x--cover-html -x--cover-xml -x--cover-tests -x--cover-package=alice,tests tests/
 ```
+
+## Shell helpers
+
+#### Install
+```
+./install.sh prod # Install prod environement
+./install.sh tests # Install tests environement (prod+tests)
+./install.sh dev # Install dev environement (prod+tests+dev)
+```
+
+#### Launch
+```
+./launch.sh func # Launch functionnal tests
+./launch.sh unit # Launch testunit
+./launch.sh tdd  # Launch testunit in TDD mode
+```
+
+You can chain commands:
+```
+./launch.sh func unit
+```
